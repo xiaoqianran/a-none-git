@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎小程序风格</title>
+    <style>
+        /* 页面基础样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航栏 */
+        nav {
+            background-color: #2f2f2f;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* 页面内容区 */
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+
+        /* 首页样式 */
+        .home-page {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #fff;
+        }
+        .home-page h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        .article-page, .profile-page {
+            padding: 20px;
+            background-color: #fff;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        
+        .article-page h2, .profile-page h2 {
+            color: #333;
+        }
+
+        .article-content, .profile-content {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* 按钮样式 */
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <nav>
+        <a href="javascript:void(0)" onclick="showPage('home')">首页</a>
+        <a href="javascript:void(0)" onclick="showPage('article')">文章</a>
+        <a href="javascript:void(0)" onclick="showPage('profile')">个人资料</a>
+    </nav>
+
+    <!-- 页面内容 -->
+    <div class="container">
+
+        <!-- 首页 -->
+        <div id="home" class="page home-page active">
+            <h1>欢迎来到知乎小程序</h1>
+            <p>探索各种有趣的文章和知识！</p>
+            <button class="btn" onclick="showPage('article')">查看文章</button>
+            <button class="btn" onclick="showPage('profile')">查看个人资料</button>
+        </div>
+
+        <!-- 文章页 -->
+        <div id="article" class="page article-page">
+            <h2>文章标题：探索科技的未来</h2>
+            <div class="article-content">
+                <p>科技的进步使得我们能够不断探索未知的领域，从人工智能到量子计算，每一次突破都带来巨大的变化...</p>
+                <button class="btn" onclick="showPage('home')">回到首页</button>
+            </div>
+        </div>
+
+        <!-- 个人资料页 -->
+        <div id="profile" class="page profile-page">
+            <h2>个人资料</h2>
+            <div class="profile-content">
+                <p>用户名: 张三</p>
+                <p>关注: 500 | 粉丝: 1000</p>
+                <button class="btn" onclick="showPage('home')">回到首页</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function showPage(page) {
+            // 隐藏所有页面
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // 显示选中的页面
+            const activePage = document.getElementById(page);
+            if (activePage) {
+                activePage.classList.add('active');
+            }
+        }
+    </script>
+    
+</body>
+</html>
